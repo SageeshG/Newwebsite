@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopZone - Online Shopping</title>
+    <link rel="stylesheet" href="shopping websites.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         STEP 1: TOP HEADER & NAVIGATION BAR
+         ========================================== -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-section">
+                <h1>ShopZone</h1>
+                <p>Your Favorite Online Shopping Website</p>
+            </div>
+
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#categories">Categories</a>
+                <a href="#products">Products</a>
+                <a href="#offers">Offers</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact</a>
+                
+                <!-- Cart Button that opens the slide page -->
+                <button class="cart-nav-btn" onclick="openCart()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Cart" class="nav-cart-icon">
+                    Cart (<span id="cart-counter" class="cart-count">0</span>)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         STEP 2: HERO BANNER SECTION
+         ========================================== -->
+    <section id="home" class="banner">
+        <h2>Welcome to ShopZone!</h2>
+        <p>Get exciting offers and discounts on top quality products.</p>
+        <div class="banner-badge">Mega Sale • Up to 50% OFF</div>
+        <br>
+        <a href="#products" class="shop-now-btn">Shop Now</a>
+    </section>
+
+    <!-- ==========================================
+         STEP 3: CATEGORIES SECTION
+         ========================================== -->
+    <section id="categories">
+        <h2 class="section-title">Shop By Categories</h2>
+        <p class="section-subtitle">Select from our wide range of popular categories</p>
+
+        <div class="categories-container">
+            <div class="category-card" onclick="setCategoryFilter('Fashion')">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=300" alt="Fashion" class="category-img">
+                <h3>Fashion</h3>
+            </div>
+            <div class="category-card" onclick="setCategoryFilter('Electronics')">
+                <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=300" alt="Electronics" class="category-img">
+                <h3>Electronics</h3>
+            </div>
+            <div class="category-card" onclick="setCategoryFilter('Shoes')">
+                <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=300" alt="Shoes" class="category-img">
+                <h3>Shoes</h3>
+            </div>
+            <div class="category-card" onclick="setCategoryFilter('Accessories')">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300" alt="Accessories" class="category-img">
+                <h3>Accessories</h3>
+            </div>
+            <div class="category-card" onclick="setCategoryFilter('Stickers')">
+                <img src="https://images.unsplash.com/photo-1572375992501-4b0892d50c69?w=300" alt="Stickers" class="category-img">
+                <h3>Stickers</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         STEP 4: FEATURED PRODUCTS GRID
+         ========================================== -->
+    <section id="products">
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-subtitle">Handpicked items with the best prices just for you</p>
+
+        <!-- Search and Filter Bar -->
+        <div class="filter-search-container">
+            <div class="search-box">
+                <img src="https://cdn-icons-png.flaticon.com/512/54/54481.png" class="search-icon-img" alt="Search">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search products by name or category..." onkeyup="filterProducts()">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="setCategoryFilter('all', this)">All</button>
+                <button class="filter-btn" onclick="setCategoryFilter('Fashion', this)">Fashion</button>
+                <button class="filter-btn" onclick="setCategoryFilter('Electronics', this)">Electronics</button>
+                <button class="filter-btn" onclick="setCategoryFilter('Shoes', this)">Shoes</button>
+                <button class="filter-btn" onclick="setCategoryFilter('Accessories', this)">Accessories</button>
+                <button class="filter-btn" onclick="setCategoryFilter('Stickers', this)">Stickers</button>
+            </div>
+        </div>
+
+        <div class="product-container">
+
+            <!-- Product 1: T-Shirt -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Fashion</span>
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="Men's T-Shirt">
+                </div>
+                <div class="product-details">
+                    <h3>Men's Cotton T-Shirt</h3>
+                    <p class="product-desc">Pure 100% breathable cotton everyday wear.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹999</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Men\'s Cotton T-Shirt', 499, 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2: Wireless Headphones -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Electronics</span>
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Wireless Headphones">
+                </div>
+                <div class="product-details">
+                    <h3>Wireless Headphones</h3>
+                    <p class="product-desc">Deep bass stereo sound with noise reduction.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹999</span>
+                        <span class="original-price">₹1999</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Wireless Headphones', 999, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3: Wrist Watch -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Accessories</span>
+                    <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=500" alt="Classic Wrist Watch">
+                </div>
+                <div class="product-details">
+                    <h3>Classic Wrist Watch</h3>
+                    <p class="product-desc">Elegant analog quartz watch with leather strap.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹799</span>
+                        <span class="original-price">₹1499</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Classic Wrist Watch', 799, 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4: Sports Shoes -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Shoes</span>
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Red Sports Shoes">
+                </div>
+                <div class="product-details">
+                    <h3>Pro Running Shoes</h3>
+                    <p class="product-desc">Lightweight cushioned sole for sports and gym.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹1299</span>
+                        <span class="original-price">₹2499</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Pro Running Shoes', 1299, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 5: Travel Backpack -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Accessories</span>
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500" alt="Travel Backpack">
+                </div>
+                <div class="product-details">
+                    <h3>School & Travel Backpack</h3>
+                    <p class="product-desc">Spacious waterproof bag with laptop sleeve.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹799</span>
+                        <span class="original-price">₹1499</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('School & Travel Backpack', 799, 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 6: Smartphone -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Electronics</span>
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="Smart Mobile Phone">
+                </div>
+                <div class="product-details">
+                    <h3>Smart 5G Mobile Phone</h3>
+                    <p class="product-desc">High resolution display and high speed processor.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹14999</span>
+                        <span class="original-price">₹19999</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Smart 5G Mobile Phone', 14999, 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 7: Sunglasses -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Accessories</span>
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500" alt="Polarized Sunglasses">
+                </div>
+                <div class="product-details">
+                    <h3>Polarized Sunglasses</h3>
+                    <p class="product-desc">100% UV protected modern stylish sunglasses.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹399</span>
+                        <span class="original-price">₹899</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Polarized Sunglasses', 399, 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 8: Winter Hoodie -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Fashion</span>
+                    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500" alt="Men's Winter Hoodie">
+                </div>
+                <div class="product-details">
+                    <h3>Warm Fleece Hoodie</h3>
+                    <p class="product-desc">Cozy winter pullover with front kangaroo pocket.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹1599</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Warm Fleece Hoodie', 899, 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 9: Bluetooth Speaker -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Electronics</span>
+                    <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500" alt="Bluetooth Speaker">
+                </div>
+                <div class="product-details">
+                    <h3>Portable Bluetooth Speaker</h3>
+                    <p class="product-desc">360-degree wireless surround sound audio.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹999</span>
+                        <span class="original-price">₹1999</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Portable Bluetooth Speaker', 999, 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 10: White Casual Sneakers -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Shoes</span>
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500" alt="Casual Sneakers">
+                </div>
+                <div class="product-details">
+                    <h3>Classic White Sneakers</h3>
+                    <p class="product-desc">Versatile and trendy sneakers for casual outings.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹1199</span>
+                        <span class="original-price">₹2199</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Classic White Sneakers', 1199, 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 11: Steel Water Bottle -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Accessories</span>
+                    <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500" alt="Water Bottle">
+                </div>
+                <div class="product-details">
+                    <h3>Insulated Steel Bottle</h3>
+                    <p class="product-desc">Keeps water cold or hot for 24 continuous hours.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹349</span>
+                        <span class="original-price">₹699</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Insulated Steel Bottle', 349, 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 12: Denim Pants -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Fashion</span>
+                    <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=500" alt="Denim Pants">
+                </div>
+                <div class="product-details">
+                    <h3>Classic Denim Pants</h3>
+                    <p class="product-desc">Premium blue washed denim Pants for men & women.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹1499</span>
+                        <span class="original-price">₹2999</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Classic Denim Pants', 1499, 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 13: Vinyl Stickers Pack -->
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <span class="product-tag">Stickers</span>
+                    <img src="https://images.unsplash.com/photo-1572375992501-4b0892d50c69?w=500" alt="Vinyl Stickers Pack">
+                </div>
+                <div class="product-details">
+                    <h3>Vinyl Stickers Pack (50 Pcs)</h3>
+                    <p class="product-desc">Waterproof aesthetic stickers for laptop, phone, & bottles.</p>
+                    <div class="price-row">
+                        <span class="current-price">₹199</span>
+                        <span class="original-price">₹499</span>
+                    </div>
+                    <button class="add-cart-btn" onclick="addToCart('Vinyl Stickers Pack (50 Pcs)', 199, 'https://images.unsplash.com/photo-1572375992501-4b0892d50c69?w=500')">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         STEP 5: SLIDING CART DRAWER (SLIDE PAGE)
+         ========================================== -->
+    <div id="cartSlider" class="cart-slider">
+        <!-- Cart Drawer Header -->
+        <div class="cart-header">
+            <div class="cart-header-title">
+                <img src="https://cdn-icons-png.flaticon.com/512/2838/2838895.png" alt="Shopping Bag" class="cart-header-icon">
+                <h3>Shopping Cart</h3>
+            </div>
+            <button class="close-cart-btn" onclick="closeCart()" title="Close Cart">✕</button>
+        </div>
+
+        <!-- Cart Items List Container -->
+        <div id="cartItemsList" class="cart-items-list">
+            <div class="empty-cart-container">
+                <img src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png" alt="Empty Cart" class="empty-cart-img">
+                <p class="empty-cart-msg">Your shopping cart is empty.</p>
+            </div>
+        </div>
+
+        <!-- Cart Drawer Footer -->
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Total Amount:</span>
+                <span id="cartTotalPrice">₹0</span>
+            </div>
+            <button class="checkout-btn" onclick="alert('Thank you for shopping! Proceeding to checkout.')">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Background Dimming Overlay -->
+    <div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+
+    <!-- ==========================================
+         STEP 6: SPECIAL OFFERS SECTION
+         ========================================== -->
+    <section id="offers" class="info-section">
+        <h2 class="section-title">Special Offers</h2>
+        <div class="offers-grid">
+            <div class="offer-box"><span class="offer-tag">DISCOUNT</span> Flat 20% discount on orders above ₹1,000!</div>
+            <div class="offer-box"><span class="offer-tag">SHIPPING</span> Free nationwide delivery on all online purchases!</div>
+            <div class="offer-box"><span class="offer-tag">SPECIAL</span> Festival Special Deals - Up to 50% discount!</div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         STEP 7: ABOUT US SECTION
+         ========================================== -->
+    <section id="about" class="info-section">
+        <h2 class="section-title">About ShopZone</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: rgb(71, 85, 105);">
+            ShopZone is a modern e-commerce platform offering premium quality fashion, high-tech electronics, 
+            stylish footwear, and everyday lifestyle accessories at prices that fit every budget.
+        </p>
+    </section>
+
+    <!-- ==========================================
+         STEP 8: CONTACT US SECTION
+         ========================================== -->
+    <section id="contact" class="info-section">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-details">
+            <div class="contact-item"><strong>Location:</strong> Chennai, Tamil Nadu, India</div>
+            <div class="contact-item"><strong>Phone:</strong> +91 98765 43210</div>
+            <div class="contact-item"><strong>Email:</strong> support@shopzone.com</div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         STEP 9: FOOTER
+         ========================================== -->
+    <footer>
+        <p>© 2026 ShopZone Online Shopping. All Rights Reserved.</p>
+        <p>Built for Project Demo & Learning</p>
+    </footer>
+
+    <!-- ==========================================
+         STEP 10: STEP-BY-STEP JAVASCRIPT LOGIC
+         (Easy to explain in Viva / Exam)
+         ========================================== -->
+    <script>
+        // ----------------------------------------------------
+        // 1. DATA STORAGE: Array to store cart items
+        // ----------------------------------------------------
+        let cart = [];
+
+        // ----------------------------------------------------
+        // 2. SLIDE DRAWER CONTROLS: Open and Close the Cart Slider
+        // ----------------------------------------------------
+        function openCart() {
+            // Adds the 'active' class to make the cart slide from right
+            document.getElementById('cartSlider').classList.add('active');
+            // Shows the dark backdrop overlay
+            document.getElementById('cartOverlay').classList.add('active');
+        }
+
+        function closeCart() {
+            // Removes 'active' class to slide the cart back to hidden
+            document.getElementById('cartSlider').classList.remove('active');
+            // Hides the dark backdrop overlay
+            document.getElementById('cartOverlay').classList.remove('active');
+        }
+
+        // ----------------------------------------------------
+        // 3. ADD TO CART: Triggered when "Add to Cart" button is clicked
+        // ----------------------------------------------------
+        function addToCart(title, price, image) {
+            // Check if this product is already in the cart
+            const existingItem = cart.find(item => item.title === title);
+
+            if (existingItem) {
+                // If it already exists, simply increase quantity
+                existingItem.quantity += 1;
+            } else {
+                // If it's a new item, add it to the cart array
+                cart.push({
+                    title: title,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+
+            // Refresh the cart UI and counter
+            updateCartDisplay();
+
+            // Automatically slide open the cart drawer!
+            openCart();
+        }
+
+        // ----------------------------------------------------
+        // 4. QUANTITY CONTROLS (+ and - buttons inside the cart)
+        // ----------------------------------------------------
+        function changeQuantity(index, delta) {
+            cart[index].quantity += delta;
+
+            // If quantity becomes zero, remove the item
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+
+            updateCartDisplay();
+        }
+
+        // ----------------------------------------------------
+        // 5. REMOVE ITEM: Delete button (trash icon)
+        // ----------------------------------------------------
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        // ----------------------------------------------------
+        // 6. UPDATE DISPLAY: Updates HTML for Cart list, Counter, and Total
+        // ----------------------------------------------------
+        function updateCartDisplay() {
+            const cartItemsList = document.getElementById('cartItemsList');
+            const cartCounter = document.getElementById('cartCounter') || document.getElementById('cart-counter');
+            const cartTotalPrice = document.getElementById('cartTotalPrice');
+
+            // Calculate total quantity and total price
+            let totalCount = 0;
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                totalCount += item.quantity;
+                totalPrice += (item.price * item.quantity);
+            });
+
+            // Update cart counter badge in navigation
+            if (cartCounter) {
+                cartCounter.innerText = totalCount;
+            }
+
+            // Update Total Price in footer
+            cartTotalPrice.innerText = '₹' + totalPrice.toLocaleString();
+
+            // Check if cart is empty
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = `
+                    <div class="empty-cart-container">
+                        <img src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png" alt="Empty Cart" class="empty-cart-img">
+                        <p class="empty-cart-msg">Your shopping cart is empty.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Build the HTML for each item in the cart
+            let itemsHtml = '';
+            cart.forEach((item, index) => {
+                itemsHtml += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.title}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.title}</div>
+                            <div class="cart-item-price">₹${item.price}</div>
+                            <div class="cart-item-qty">
+                                <button class="qty-btn" onclick="changeQuantity(${index}, -1)">-</button>
+                                <span class="qty-text">${item.quantity}</span>
+                                <button class="qty-btn" onclick="changeQuantity(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="delete-item-btn" onclick="removeItem(${index})" title="Remove item">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" alt="Remove" class="delete-icon-img">
+                        </button>
+                    </div>
+                `;
+            });
+
+            cartItemsList.innerHTML = itemsHtml;
+        }
+
+        // ----------------------------------------------------
+        // 7. CATEGORY FILTER & SEARCH FUNCTIONALITY
+        // ----------------------------------------------------
+        let currentCategory = 'all';
+
+        function setCategoryFilter(category, buttonElement) {
+            currentCategory = category;
+
+            // Highlight selected filter button
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            if (buttonElement) {
+                buttonElement.classList.add('active');
+            } else {
+                buttons.forEach(btn => {
+                    if (btn.innerText.toLowerCase() === category.toLowerCase()) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            filterProducts();
+
+            // Smooth scroll to products section
+            const productsSection = document.getElementById('products');
+            if (productsSection) {
+                productsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function filterProducts() {
+            const searchInput = document.getElementById('searchInput');
+            const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const productCards = document.querySelectorAll('.product-card');
+
+            productCards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const tag = card.querySelector('.product-tag').innerText.toLowerCase();
+
+                const matchesCategory = (currentCategory === 'all') || (tag === currentCategory.toLowerCase());
+                const matchesSearch = title.includes(searchQuery) || tag.includes(searchQuery);
+
+                if (matchesCategory && matchesSearch) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
